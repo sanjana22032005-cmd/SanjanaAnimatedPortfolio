@@ -2,7 +2,7 @@
 
 A premium, interactive, scroll-based animated portfolio website built using vanilla technologies (HTML5, CSS3, JavaScript ES6) and canvas frame-rendering techniques. The website binds a smooth cherry-blossom animation sequence directly to scroll progression.
 
-👉 **Live Demo:** [Deployable to GitHub Pages / Vercel]
+👉 **Live Demo:** https://sanjana-animated-portfolio.vercel.app/
 👉 **GitHub Repository:** [SanjanaAnimatedPortfolio](https://github.com/sanjana22032005-cmd/SanjanaAnimatedPortfolio)
 
 ---
