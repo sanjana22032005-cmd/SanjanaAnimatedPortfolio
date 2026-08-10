@@ -286,16 +286,21 @@ section {
 /* Hero Section */
 .hero-section {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 4rem;
-  padding-top: 10rem;
+  justify-content: center;
+  text-align: center;
+  padding-top: 12rem;
+  padding-bottom: 6rem;
+  min-height: 75vh;
 }
 
 .hero-content {
-  flex: 1.2;
-  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 820px;
+  text-align: center;
 }
 
 .hero-subtitle {
@@ -350,6 +355,7 @@ section {
 .hero-cta {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
 }
@@ -415,37 +421,6 @@ section {
   letter-spacing: 0.05em;
 }
 
-.hero-image-wrapper {
-  flex: 0.8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.hero-avatar {
-  width: min(340px, 75vw);
-  height: min(340px, 75vw);
-  border-radius: 50%;
-  border: 3px solid var(--accent-color);
-  object-fit: cover;
-  box-shadow: 0 0 40px var(--accent-glow),
-              inset 0 0 20px rgba(0, 0, 0, 0.8);
-  position: relative;
-  z-index: 2;
-  animation: float 6s infinite ease-in-out;
-}
-
-.avatar-glow {
-  position: absolute;
-  width: min(370px, 80vw);
-  height: min(370px, 80vw);
-  border-radius: 50%;
-  background-color: var(--accent-color);
-  filter: blur(55px);
-  opacity: 0.22;
-  z-index: 1;
-}
 
 /* Tech Ribbon */
 .tech-ribbon {
@@ -1227,20 +1202,8 @@ section {
 /* Responsive Breakpoints */
 @media (max-width: 992px) {
   .hero-section {
-    flex-direction: column-reverse;
-    text-align: center;
-    padding-top: 8rem;
-    gap: 3rem;
-  }
-  
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .hero-cta {
-    justify-content: center;
+    padding-top: 10rem;
+    padding-bottom: 4rem;
   }
 
   .about-grid {
