@@ -28,7 +28,7 @@ function formatIndex(index) {
 
 // Generate the source URL for a given frame index
 function getFramePath(index) {
-  return `frames/frame_${formatIndex(index)}.jpg`;
+  return `frames/frame_${formatIndex(index)}.webp`;
 }
 
 // Preload all images in the background asynchronously
@@ -63,7 +63,7 @@ function preloadImages() {
 
 // Handle resizing of the canvas, accommodating high-DPI screens
 function resizeCanvas() {
-  const dpr = window.devicePixelRatio || 1;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2); // Cap at 2 to avoid huge performance drop on mobile screens
   canvas.width = window.innerWidth * dpr;
   canvas.height = window.innerHeight * dpr;
   needsRedraw = true;
@@ -147,11 +147,6 @@ function updateScroll() {
 
 // Core animation loop utilizing requestAnimationFrame
 function animationLoop() {
-  if (!isLoaded) {
-    requestAnimationFrame(animationLoop);
-    return;
-  }
-
   // Smooth scroll interpolation (lerp)
   // currentPercent catches up to scrollPercent by lerpFactor percentage per frame
   const diff = scrollPercent - currentPercent;

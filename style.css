@@ -813,7 +813,7 @@ section {
 /* Projects Section */
 .projects-catalog {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 3rem;
 }
 
@@ -1296,15 +1296,42 @@ section {
 @media (max-width: 768px) {
   .page-logo {
     left: 5%;
-    top: 2rem;
+    top: 1.5rem;
+    font-size: 1.15rem;
   }
 
   .nav-capsule {
-    display: none; /* Hide navigation capsule completely on mobile devices */
+    display: flex;
+    top: auto;
+    bottom: 1.5rem;
+    height: 52px;
+    padding: 0 1.2rem;
+    width: 92%;
+    max-width: 480px;
+    border-radius: 26px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  .nav-links {
+    gap: 0.8rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .nav-link {
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-link.active::after {
+    bottom: -4px;
+    width: 3px;
+    height: 3px;
   }
   
   section {
-    padding: 6rem 5% 3rem;
+    padding: 5rem 6% 2.5rem;
   }
 
   .footer-bottom {
