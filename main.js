@@ -7,10 +7,6 @@
 
 const canvas = document.getElementById('animation-canvas');
 const ctx = canvas.getContext('2d');
-const loader = document.getElementById('loader');
-const progressBar = document.getElementById('loader-progress');
-const percentageText = document.getElementById('loader-percentage');
-const statusText = document.querySelector('.status-text');
 const scrollPrompt = document.getElementById('scroll-prompt');
 
 const totalFrames = 240;
@@ -35,52 +31,34 @@ function getFramePath(index) {
   return `frames/frame_${formatIndex(index)}.jpg`;
 }
 
-// Preload all images
+// Preload all images in the background asynchronously
 function preloadImages() {
-  return new Promise((resolve) => {
-    statusText.textContent = 'Initializing visual assets...';
+  for (let i = 1; i <= totalFrames; i++) {
+    const img = new Image();
+    img.src = getFramePath(i);
     
-    for (let i = 1; i <= totalFrames; i++) {
-      const img = new Image();
-      img.src = getFramePath(i);
-      
-      img.onload = () => {
-        handleImageLoad();
-      };
-      
-      img.onerror = () => {
-        console.warn(`Failed to load frame ${i}, skipping...`);
-        handleImageLoad(); // Count it to prevent the loader from freezing
-      };
-      
-      images.push(img);
-    }
-
-    function handleImageLoad() {
+    img.onload = () => {
       loadedCount++;
-      const progress = loadedCount / totalFrames;
-      const percentage = Math.round(progress * 100);
-      
-      // Update UI
-      progressBar.style.width = `${percentage}%`;
-      percentageText.textContent = `${percentage}%`;
-      
-      if (percentage < 30) {
-        statusText.textContent = 'Assembling digital layout...';
-      } else if (percentage < 60) {
-        statusText.textContent = 'Preloading interaction vectors...';
-      } else if (percentage < 90) {
-        statusText.textContent = 'Configuring scroll interpolation...';
-      } else {
-        statusText.textContent = 'Polishing cinematic sequence...';
-      }
-
       if (loadedCount === totalFrames) {
         isLoaded = true;
-        resolve();
       }
-    }
-  });
+      // If the frame that just loaded is the active frame, redraw it immediately
+      const activeFrame = Math.max(1, Math.min(totalFrames, Math.round(currentPercent * (totalFrames - 1)) + 1));
+      if (activeFrame === i) {
+        needsRedraw = true;
+      }
+    };
+    
+    img.onerror = () => {
+      console.warn(`Failed to load frame ${i}, skipping...`);
+      loadedCount++;
+      if (loadedCount === totalFrames) {
+        isLoaded = true;
+      }
+    };
+    
+    images.push(img);
+  }
 }
 
 // Handle resizing of the canvas, accommodating high-DPI screens
@@ -239,7 +217,7 @@ function initTypewriter() {
 }
 
 // Initialize application
-async function init() {
+function init() {
   // Listeners
   window.addEventListener('resize', resizeCanvas);
   window.addEventListener('scroll', updateScroll, { passive: true });
@@ -247,27 +225,24 @@ async function init() {
   // Set initial dimensions
   resizeCanvas();
 
-  // Load resources
-  await preloadImages();
+  // Load resources asynchronously in the background
+  preloadImages();
 
-  // Short pause for aesthetic loading completion transition
-  setTimeout(() => {
-    // Hide loader
-    loader.classList.add('fade-out');
-    // Show scroll prompt
+  // Show scroll prompt
+  if (scrollPrompt) {
     scrollPrompt.classList.remove('hidden');
-    
-    // Initialize typewriter
-    initTypewriter();
+  }
+  
+  // Initialize typewriter
+  initTypewriter();
 
-    // Trigger initial render
-    updateScroll();
-    currentPercent = scrollPercent;
-    drawFrame(1);
-    
-    // Begin rendering loop
-    animationLoop();
-  }, 400);
+  // Trigger initial render
+  updateScroll();
+  currentPercent = scrollPercent;
+  drawFrame(1);
+  
+  // Begin rendering loop
+  animationLoop();
 }
 
 // Trigger setup on DOM loaded
