@@ -39,7 +39,7 @@ A premium, interactive, scroll-based animated portfolio website built using vani
 ├── index.html                      # Layout, grid blocks, and structure
 ├── style.css                       # Glowing glassmorphic variables and responsive queries
 ├── main.js                         # Canvas rendering engine, scroll spy, and typewriter
-├── sanjana_resume_internship.pdf   # Downloadable curriculum vitae
+├── Sanjana_resume_full_n_final.pdf   # Downloadable curriculum vitae
 ├── .gitignore                      # Excludes heavy zip files and temporary utilities
 └── README.md                       # Documentation
 ```
@@ -86,4 +86,4 @@ A premium, interactive, scroll-based animated portfolio website built using vani
 * **Email:** sanjanawork48@gmail.com
 * **LinkedIn:** [sanjana-kumari-5585b4340](https://www.linkedin.com/in/sanjana-kumari-5585b4340/)
 * **GitHub:** [@sanjana22032005-cmd](https://github.com/sanjana22032005-cmd)
-* **Codolio:** [sanjanamehta](https://codolio.com/profile/sanjanamehta/card)
+* **Codolio:** [sanjanamehta](https://codolio.com/profile/sanjanamehta)
