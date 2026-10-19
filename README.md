@@ -14,9 +14,9 @@ A premium, interactive, scroll-based animated portfolio website built using vani
 * **macOS-Dock Navigation Capsule**: A floating glassmorphic nav pill centered at the top of the viewport featuring a scroll-spy engine that highlights active sections.
 * **Interactive Timeline & Stats**:
   * **Hero Typewriter**: Dynamic typing effect cycling through professional titles.
-  * **DSA & Project Stats**: High-contrast counters for DSA counts (`400+`), project lists, and scholarships.
+  * **DSA & Project Stats**: High-contrast counters for DSA counts (`500+`), project lists, and scholarships.
   * **Vertical Education Journey**: Visual tracking of B.Tech CSE (IIIT Guwahati), XII, and X details alongside decorative glowing branches.
-* **Projects & Certificates Catalog**: Includes individual links to GitHub repositories (Uber Clone, Zivro, Media Search) and Google Drive certificate credentials.
+* **Projects & Achievements Catalog**: Includes individual links to GitHub repositories (Uber Clone, Zivro, Media Search), hackathons, and credentials.
 * **Mobile-Responsive Dock**: On mobile viewports (`max-width: 768px`), the navigation capsule converts into a floating thumb-reachable bottom navigation dock.
 
 ---

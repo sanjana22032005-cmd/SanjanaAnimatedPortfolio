@@ -1,2 +1,4 @@
 video_frames_compressed.zip
 *.zip
+frames/*.jpg
+compress_frames.py
